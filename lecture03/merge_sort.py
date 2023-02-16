@@ -1,9 +1,12 @@
-def merge_sort(nums):
+from random import randint
+
+
+def merge_sort(nums, log=False):
     if len(nums) > 1:
         mid_index = len(nums) // 2
         left = nums[:mid_index]
         right = nums[mid_index:]
-        print(left,'|',right)
+        print(left, '|', right)
         merge_sort(left)
         merge_sort(right)
         i = j = k = 0
@@ -11,27 +14,31 @@ def merge_sort(nums):
             if left[i] < right[j]:
                 nums[k] = left[i]
                 i += 1
-                print('l|',end='')
+                print('l|', end='')
             else:
                 nums[k] = right[j]
                 j += 1
-                print('r|',end='')
-            print(nums[k],end='|<|')
+                print('r|', end='')
+            print(nums[k], end='|<|')
             k += 1
-            
+
         while i < len(left):
             nums[k] = left[i]
-            print(nums[k],end='|l|')
+            print(nums[k], end='|l|')
             i += 1
             k += 1
-        
+
         while j < len(right):
             nums[k] = right[j]
-            print(nums[k],end='|r|')
+            print(nums[k], end='|r|')
             j += 1
             k += 1
         print()
-            
-list1 = [1,5,6,9,8,7,2,1,55,2,4]
-merge_sort(list1)
+
+
+size = int(input('Введите размер списка: '))
+
+list1 = [randint(0, 100) for i in range(size)]
+print(list1)
+merge_sort(list1, log=True)
 print(list1)
