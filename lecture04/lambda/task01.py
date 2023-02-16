@@ -20,21 +20,25 @@
 # square_pairs = [(i, i*i) for i in even_numbers]
 # print(square_pairs)
 
-def select(f, col):
-    return [f(x) for x in col]
-
+# def select(f, col):
+#     return [f(x) for x in col]
+# то же самое что функция map
 
 def where(f, col):
     return [x for x in col if f(x)]
-
+# то же самое что функция filter
 
 data = [1, 2, 3, 5, 8, 15, 23, 38]
 print('Изначальный массив \n', data, sep='')
 # res = select(int, data)
+# res = map(int, data)
 
-res = where(lambda x: x % 2 == 0, data)
+# res = where(lambda x: x % 2 == 0, data)
+res = list(filter(lambda x: x % 2 == 0, data))
 # res = where(lambda x: x % 2 == 0, res)
+# res = filter(lambda x: x % 2 == 0, res)
 print('Чётные числа \n', res, sep='')  # [2, 8, 38]
-res = list(select(lambda x: (x, x ** 2), res))
+# res = list(select(lambda x: (x, x ** 2), res))
+res = list(map(lambda x: (x, x ** 2), res))
 # res = [(x, x ** 2) for x in res]
 print('Квадратные пары \n', res, sep='')
